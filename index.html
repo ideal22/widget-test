@@ -10,9 +10,21 @@
     <div id="root"></div>
     <div id="widget"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
+    <!-- <script
       type="module"
       src="https://s3.smartbank.uz/market-test/widgets/16/index.js"
-    ></script>
+    ></script> -->
+
+    <script>
+      let script = document.createElement('script')
+      script.src = 'https://s3.smartbank.uz/market-test/widgets/16/index.js'
+      script.onerror = function () {
+        console.error('Error while connecting', script)
+      }
+      script.onload = function () {
+        document.getElementsByTagName('head')[0].appendChild(script)
+        console.log('Success')
+      }
+    </script>
   </body>
 </html>
